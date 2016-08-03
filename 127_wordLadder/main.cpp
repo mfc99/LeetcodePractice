@@ -27,9 +27,9 @@ public:
         
         for (int i = 0, n = s.size(); i < n; ++i) { //Runtime O(string size x 26)
             char c = s[i];
-            for (int j = 0; j<26; ++j) {
-                if (c == 'a' + j) continue; //
-                s[i] = 'a' + j;
+            for (char j = 'a'; j<= 'z'; ++j) {
+                if (c == j) continue; //
+                s[i] =  j;
                 if (dict.count(s)) {
                     ret.push_back(s);
                     dict.erase(s);
