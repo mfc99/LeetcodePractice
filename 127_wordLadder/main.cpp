@@ -7,7 +7,7 @@ class Solution {
 public:
     int ladderLength(string beginWord, string endWord, unordered_set<string> &wordList) {
         
-        wordList.insert(endWord);
+        wordList.insert(endWord); //insert endword so that the previous word cound find the endword from wordlist as neighbor
         queue<pair<string, int>> q; //queue <current_string, the # of transform>
                                     // Space O(WordList size)
         q.push(make_pair(beginWord, 1));
@@ -17,8 +17,8 @@ public:
             if (s == endWord) return len;
             q.pop();
             vector<string> neighbors = findNeighbors(s, wordList);
-            for (int i = 0; i<neighbors.size(); i++) //Runtime O(WordList_size)
-                q.push(make_pair(neighbors[i], len + 1));
+            for (auto i: neighbors) //Runtime O(WordList_size)
+                q.push(make_pair(i, len + 1));
         }
         return 0; // if there's no match, return 0;
     }
